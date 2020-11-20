@@ -8,6 +8,8 @@ import { DeleteTagItem } from "../utils/DeleteTagItem";
 import { TagPostContext } from "../Tags/TagPostProvider";
 import { TagContext } from "../Tags/TagProvider";
 import { DeleteItem } from "../utils/DeleteItem";
+import { Box, Heading } from "grommet"
+
 
 export const PostDetails = (props) => {
   const { getPostById, post, setPost, getTagsByPost, postTags} = useContext(PostContext);
@@ -60,12 +62,13 @@ export const PostDetails = (props) => {
 
   return (
     <>
+    <Box margin= "medium">
       {/* Post Detail JSX */}
       <section className="container__card">
         <section className="container__cardContent">  
           <section className="container__cardContentLeft"></section>        
-          <h3 className="post__title">{post.title}</h3>
-
+          <Heading level = "2">{post.title}</Heading>
+          
           {/* if current user wrote the post, show an edit button */}
           {post.created_by_current_user 
           ? (
@@ -81,12 +84,11 @@ export const PostDetails = (props) => {
           }
           
           <img className="post__image" src={post.image_url} style={{width: `500px`}} alt="article"></img>
+          <ReactionList {...props} />{/*Renders ReactionList*/}
           <div className="post__content">{post.content}</div>
           <div key={post.id} className="post_date">
             Published: {new Date(post.publication_date).toLocaleDateString("en-US")}
           </div>
-
-          {/* If current user did not write the post, show the author name with a link to their profile*/}
           <div>
             {post.created_by_current_user 
             ? (
@@ -97,6 +99,7 @@ export const PostDetails = (props) => {
               </section>
             ) 
             : (
+              <>
             <section className="container__cardContentBottom">
                 <div className="post_author">
                   {"By: "} 
@@ -104,8 +107,16 @@ export const PostDetails = (props) => {
                       {post.user.user.first_name}
                   </Link>
                 </div>
+          
+        
+
+          {/* If current user did not write the post, show the author name with a link to their profile*/}
+         
                 
             </section>
+            
+            <button className="container__cardContentTop" onClick={() => props.history.push(`/posts/comments/${post.id}`)}>COMMENTS</button>
+            </>
             )
             }
           </div>
@@ -120,7 +131,8 @@ export const PostDetails = (props) => {
         </section>
 
       </section>
-      <ReactionList {...props} />{/*Renders ReactionList*/}
+      </Box>
+      
     </>
   );
 };

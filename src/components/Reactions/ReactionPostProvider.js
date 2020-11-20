@@ -16,7 +16,6 @@ export const ReactionPostProvider = (props) => {
             .then(res => res.json())
             .then(setReactionPosts)
     }
- 
 
     const createReactionPost = ReactionPost => {
         return fetch("http://localhost:8000/postreactions", {

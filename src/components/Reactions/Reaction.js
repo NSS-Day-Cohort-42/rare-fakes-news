@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ReactionPostContext } from "../Reactions/ReactionPostProvider"
 import { PostContext } from "../Posts/PostProvider"
+import { Button } from "grommet"
 
 
 export const Reaction = (props) => {
@@ -49,9 +50,9 @@ export const Reaction = (props) => {
 
     return (
         <section className="reaction">
-            <button title={props.reaction.label} onClick={() => {
+            <Button title={props.reaction.label} onClick={() => {
                 constructOneTimeReactionPostObj()
-            }}>{props.reaction.image_url}</button>
+            }}>{props.reaction.image_url}</Button>
             <div className="reactionCount">{reactionCount.length}</div>
         </section>
     )

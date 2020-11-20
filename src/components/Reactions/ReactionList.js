@@ -15,7 +15,6 @@ export const ReactionList = (props) => {
 
     return (
         <div style={{ margin: "1rem" }} className="reactionContainer">
-            <h3>Reactions:</h3>
             <div className="reactions">
                 { //map through the reactions and pass the reaction obj and props down to the child component
                     reactions.map(reaction => <Reaction key={reaction.id} {...props} reaction={reaction} />)

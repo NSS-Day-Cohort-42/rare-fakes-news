@@ -211,8 +211,7 @@ a {
 } */
 
 .container__card {
-	display: flex;
-	flex-direction: row;
+
 	background-color: #B8F2E6;
 	margin: 1rem;
 	padding: 2rem;
@@ -226,7 +225,9 @@ a {
 }
 
 .container__cardContentTop {	
-}
+	width: 23%;
+}	
+	
 
 .container__cardContentLeft {
 	width: 70%;

@@ -90,6 +90,7 @@ export const PostDetails = (props) => {
           <div key={post.id} className="post_date">
             Published: {new Date(post.publication_date).toLocaleDateString("en-US")}
           </div>
+          <button className="container__cardContentTop" onClick={() => props.history.push(`/posts/comments/${post.id}`)}>COMMENTS</button>
 
           {/* If current user did not write the post, show the author name with a link to their profile*/}
           <div>
